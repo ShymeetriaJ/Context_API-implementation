@@ -31,5 +31,11 @@ export function AppProviders({children}) {
         deleteTodo,
         editTodo,
         clearCompleted
-    }), [todos]);     
+    }), [todos]);
+    // theme state 
+    const [theme, setTheme] = useState('light');
+    // theme function logic
+    const toggleTheme = () => setTheme(t => (t === 'light' ? 'dark' : 'light'));
+    const themeValue = useMemo(() => ({theme, toggleTheme}), [theme]);
+    
 }
