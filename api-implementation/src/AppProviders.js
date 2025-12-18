@@ -19,8 +19,17 @@ export function AppProviders({children}) {
     const editTodo = (id) => {
 
     };
-    // created function to clear completed todo
+    // created function to clear completed todos
     const clearCompleted = () => {
 
     };
+    // created function that creates todo value with Dependency array
+    const todoValue = useMemo(() => ({
+        todos,
+        addTodo,
+        toggleTodo,
+        deleteTodo,
+        editTodo,
+        clearCompleted
+    }), [todos]);     
 }
