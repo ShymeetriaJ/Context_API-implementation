@@ -42,4 +42,8 @@ export function AppProviders({children}) {
     // filter function logic
     const filterValue = useMemo(() => ({filter, setFilter}), [filter]);
 
+    return(
+        
+    );
+
 }
