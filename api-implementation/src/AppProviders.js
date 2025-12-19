@@ -37,5 +37,9 @@ export function AppProviders({children}) {
     // theme function logic
     const toggleTheme = () => setTheme(t => (t === 'light' ? 'dark' : 'light'));
     const themeValue = useMemo(() => ({theme, toggleTheme}), [theme]);
-    
+    //  filter state
+    const [filter, setFilter] = useState();
+    // filter function logic
+    const filterValue = useMemo(() => ({filter, setFilter}), [filter]);
+
 }
