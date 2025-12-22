@@ -3,7 +3,7 @@ import TodoContext from './context/TodoContext';
 
 
 function App() {
-  const {todos, addTodo, toggleTodo, deleteTodo, editTodo} = useContext(TodoContext);
+  const {todos, addTodo, toggleTodo, deleteTodo, editTodo, clearCompleted} = useContext(TodoContext);
 
   return (
     <div>
@@ -37,6 +37,8 @@ function App() {
           </li>
         ))}
       </ul>
+      {/* clear Completed todos testing */}
+      <button onClick={clearCompleted}>Clear Completed</button>
     </div>
   )
 }

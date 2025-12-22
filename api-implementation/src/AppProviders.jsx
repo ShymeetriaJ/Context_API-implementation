@@ -32,7 +32,6 @@ export function AppProviders({children}) {
 
         console.log('Todo deleted, id:', id);
     };
-
     // created function to edit todo
     const editTodo = (id) => {
         setTodos(currentTodos =>
@@ -43,10 +42,10 @@ export function AppProviders({children}) {
         console.log('Todo edited, id:', id, 'new text:', newText);
     };
 
-
     // created function to clear completed todos
     const clearCompleted = () => {
-
+        setTodos(currentTodos => currentTodos.filter(todo => !todo.completed));
+        console.log('Completed todos cleared');
     };
     // created function that creates todo value with Dependency array
     const todoValue = useMemo(() => ({
