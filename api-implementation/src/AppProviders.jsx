@@ -32,10 +32,18 @@ export function AppProviders({children}) {
 
         console.log('Todo deleted, id:', id);
     };
+
     // created function to edit todo
     const editTodo = (id) => {
-
+        setTodos(currentTodos =>
+            currentTodos.map(todo =>
+                todo.id === id ? { ...todo, text: newText } : todo
+            )
+        );
+        console.log('Todo edited, id:', id, 'new text:', newText);
     };
+
+
     // created function to clear completed todos
     const clearCompleted = () => {
 
