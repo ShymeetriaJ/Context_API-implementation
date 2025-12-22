@@ -3,7 +3,7 @@ import TodoContext from './context/TodoContext';
 
 
 function App() {
-  const {todos, addTodo} = useContext(TodoContext);
+  const {todos, addTodo, toggleTodo} = useContext(TodoContext);
 
   return (
     <div>
@@ -15,6 +15,24 @@ function App() {
       </button>
       
       <p>Total todos: {todos.length}</p>
+
+      {/* toggle testing */}
+      <ul>
+        {todos.map(todo => (
+          <li key={todo.id}>
+            <input 
+            type="checkbox" 
+            checked={todo.completed} 
+            onChange={() => toggleTodo(todo.id)}
+            />
+            <span style= {{
+              textDecoration: todo.completed ? 'line-through' : 'none'
+            }}>
+              {todo.text}
+            </span>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }

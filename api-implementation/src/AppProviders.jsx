@@ -6,9 +6,6 @@ import ThemeContext from './context/ThemeContext'
 // created AppProviders function
 export function AppProviders({children}) {
     // created state
-
-
-
     const [todos, setTodos] = useState([]);
     // created function for adding new todo
     const addTodo = (text) => {
@@ -21,13 +18,18 @@ export function AppProviders({children}) {
             console.log('Todo added:', newTodo);
         };
 
-
-
-
     // created function for toggling todo status
     const toggleTodo = (id) => {
-
+        setTodos(currentTodos =>
+            currentTodos.map(todo =>
+                todo.id === id ? { ...todo, completed: !todo.completed } : todo
+            )
+        );
+        console.log('Todo toggled, id', id);
     };
+
+
+
     // created function for deleting todo
     const deleteTodo = (id) => {
 
