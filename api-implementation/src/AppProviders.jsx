@@ -17,7 +17,6 @@ export function AppProviders({children}) {
             setTodos(currentTodos => [...currentTodos, newTodo]);
             console.log('Todo added:', newTodo);
         };
-
     // created function for toggling todo status
     const toggleTodo = (id) => {
         setTodos(currentTodos =>
@@ -27,12 +26,11 @@ export function AppProviders({children}) {
         );
         console.log('Todo toggled, id', id);
     };
-
-
-
     // created function for deleting todo
     const deleteTodo = (id) => {
+        setTodos(currentTodos => currentTodos.filter(todo => todo.id !== id));
 
+        console.log('Todo deleted, id:', id);
     };
     // created function to edit todo
     const editTodo = (id) => {
