@@ -2,4 +2,4 @@ import React from 'react';
 
 const ThemeContext = React.createContext();
 
-export default ThemeContextContext;
+export default ThemeContext;

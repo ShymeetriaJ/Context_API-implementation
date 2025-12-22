@@ -1,12 +1,29 @@
-import { useState } from "react";
+import React, { useState, useMemo } from "react";
+import TodoContext from "./context/TodoContext";
+import FilterContext from './context/FilterContext';
+import ThemeContext from './context/ThemeContext'
+
 // created AppProviders function
 export function AppProviders({children}) {
     // created state
+
+
+
     const [todos, setTodos] = useState([]);
     // created function for adding new todo
     const addTodo = (text) => {
+        const newTodo = {
+                id: Date.now(),
+                text: text,
+                completed: false
+            };
+            setTodos(currentTodos => [...currentTodos, newTodo]);
+            console.log('Todo added:', newTodo);
+        };
 
-    };
+
+
+
     // created function for toggling todo status
     const toggleTodo = (id) => {
 
@@ -35,15 +52,23 @@ export function AppProviders({children}) {
     // theme state 
     const [theme, setTheme] = useState('light');
     // theme function logic
-    const toggleTheme = () => setTheme(t => (t === 'light' ? 'dark' : 'light'));
+    const toggleTheme = () => {
+        setTheme(currentTheme => (currentTheme === 'light' ? 'dark' : 'light'));
+    };
     const themeValue = useMemo(() => ({theme, toggleTheme}), [theme]);
     //  filter state
     const [filter, setFilter] = useState();
     // filter function logic
     const filterValue = useMemo(() => ({filter, setFilter}), [filter]);
 
-    return(
-        
+    return (
+      <TodoContext.Provider value={todoValue}>
+        <FilterContext.Provider value={filterValue}>
+          <ThemeContext.Provider value={themeValue}>
+          {children}
+          </ThemeContext.Provider>
+        </FilterContext.Provider>
+      </TodoContext.Provider>
     );
 
 }
