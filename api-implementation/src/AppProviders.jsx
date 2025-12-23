@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import TodoContext from "./context/TodoContext";
 import FilterContext from './context/FilterContext';
 import ThemeContext from './context/ThemeContext'
@@ -6,8 +6,12 @@ import ThemeContext from './context/ThemeContext'
 // created AppProviders function
 export function AppProviders({children}) {
     // created state
-    const [todos, setTodos] = useState([]);
+    const [todos, setTodos] = useState(() => {
+        const savedTodos = localStorage.getItem('todos');
+        return savedTodos ? JSON.parse(savedTodos) : [];
+    });
     // created function for adding new todo
+    
     const addTodo = (text) => {
         const newTodo = {
                 id: Date.now(),

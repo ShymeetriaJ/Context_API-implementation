@@ -12,7 +12,12 @@ function App() {
   const { theme } = useContext(ThemeContext);
 
   return (
-      <div>
+      <div style={{
+        backgroundColor: theme === 'light' ? '#ffffff' : '#1a1a1a',
+        color: theme === 'light' ? '#000000' : '#ffffff',
+        minHeight: '100vh',
+        padding: '20px'
+      }}>
       <h1>Todo App</h1>
 
       <ThemeToggleButton />
