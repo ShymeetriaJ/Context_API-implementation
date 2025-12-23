@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'Amsterdam Graffiti';
+  src: url('./assets/fonts/amsterdam-graffiti.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 * {
   margin: 0;
   padding: 0;
@@ -5,9 +11,7 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Amsterdam Graffiti', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .app-container {
