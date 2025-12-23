@@ -64,7 +64,7 @@ export function AppProviders({children}) {
     };
     const themeValue = useMemo(() => ({theme, toggleTheme}), [theme]);
     //  filter state
-    const [filter, setFilter] = useState();
+    const [filter, setFilter] = useState('all');
     // filter function logic
     const filterValue = useMemo(() => ({filter, setFilter}), [filter]);
 
