@@ -2,18 +2,26 @@ import { useContext } from "react";
 import TodoContext from './context/TodoContext';
 import TodoList from "./components/TodoList/TodoList";
 import TodoInput from './components/TodoInput/TodoInput';
+import FilterButtons from "./components/FilterButtons/FilterButtons";
+import ThemeContext from "./context/ThemeContext";
+import ThemeToggleButton from "./components/ThemeToggleButton/ThemeToggleButton";
 
 
 function App() {
   const {clearCompleted} = useContext(TodoContext);
+  const { theme } = useContext(ThemeContext);
 
   return (
       <div>
       <h1>Todo App</h1>
+
+      <ThemeToggleButton />
       
       <TodoInput />
       
       <TodoList />
+
+      <FilterButtons />
       
       <button onClick={clearCompleted}>
         Clear Completed
