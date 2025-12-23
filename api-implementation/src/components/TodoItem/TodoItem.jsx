@@ -24,8 +24,9 @@ const TodoItem = ({todo}) => {
     };
 
     return (
-        <li>
+        <li className="todo-item">
             <input
+                className="todo-checkbox"
                 type="checkbox"
                 checked={todo.completed}  
                 onChange={() => toggleTodo(todo.id)}  
@@ -33,7 +34,8 @@ const TodoItem = ({todo}) => {
 
             {isEditing ? (  
                 <>
-                    <input 
+                    <input
+                        className="todo-edit-input" 
                         type="text"
                         value={editText}
                         onChange={(e) => setEditText(e.target.value)}
@@ -43,18 +45,16 @@ const TodoItem = ({todo}) => {
                         }}
                         autoFocus
                     />
-                    <button onClick={handleEdit}>Save</button>
-                    <button onClick={handleGoBack}>Go Back</button>
+                    <button onClick={handleEdit} className="todo-btn save-btn" >Save</button>
+                    <button onClick={handleGoBack} className="todo-btn go-back-btn">Go Back</button>
                 </>
             ) : (
                 <>
-                    <span style={{ 
-                        textDecoration: todo.completed ? 'line-through' : 'none' 
-                    }}>
+                    <span className={`todo-text ${todo.completed ? 'completed' : ''}`}>
                         {todo.text}
                     </span>
-                    <button onClick={() => setIsEditing(true)}>Edit</button>
-                    <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+                    <button onClick={() => setIsEditing(true)} className="todo-btn edit-btn">Edit</button>
+                    <button onClick={() => deleteTodo(todo.id)} className="todo-btn delete-btn">Delete</button>
                 </>
             )}
         </li>

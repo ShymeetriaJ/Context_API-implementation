@@ -5,24 +5,24 @@ const FilterButtons = () => {
   const { filter, setFilter } = useContext(FilterContext);
 
   return (
-    <div>
+    <div className='filter-buttons'>
       <button 
         onClick={() => setFilter('all')}
-        style={{ fontWeight: filter === 'all' ? 'bold' : 'normal' }}
+        className={`filter-btn ${filter === 'all' ? 'active' : ''}`}
       >
         All
       </button>
       
       <button 
         onClick={() => setFilter('active')}
-        style={{ fontWeight: filter === 'active' ? 'bold' : 'normal' }}
+        className={`filter-btn ${filter === 'active' ? 'active' : ''}`}
       >
         Active
       </button>
       
       <button 
         onClick={() => setFilter('completed')}
-        style={{ fontWeight: filter === 'completed' ? 'bold' : 'normal' }}
+        className={`filter-btn ${filter === 'completed' ? 'active' : ''}`}
       >
         Completed
       </button>

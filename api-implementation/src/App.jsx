@@ -5,6 +5,7 @@ import TodoInput from './components/TodoInput/TodoInput';
 import FilterButtons from "./components/FilterButtons/FilterButtons";
 import ThemeContext from "./context/ThemeContext";
 import ThemeToggleButton from "./components/ThemeToggleButton/ThemeToggleButton";
+import './App.css';
 
 
 function App() {
@@ -12,25 +13,21 @@ function App() {
   const { theme } = useContext(ThemeContext);
 
   return (
-      <div style={{
-        backgroundColor: theme === 'light' ? '#ffffff' : '#1a1a1a',
-        color: theme === 'light' ? '#000000' : '#ffffff',
-        minHeight: '100vh',
-        padding: '20px'
-      }}>
-      <h1>Todo App</h1>
-
-      <ThemeToggleButton />
+      <div className={`app-container ${theme}`}>
+      <header className="app-header">
+        <h1 className="app-title">Getter Done Application</h1>
+        <ThemeToggleButton />
+      </header>
       
-      <TodoInput />
-      
-      <TodoList />
-
-      <FilterButtons />
-      
-      <button onClick={clearCompleted}>
-        Clear Completed
-      </button>
+      <main className="app-content">
+        <TodoInput />
+        <FilterButtons />
+        <TodoList />
+        
+        <button onClick={clearCompleted} className="clear-completed-btn">
+          Clear Completed
+        </button>
+      </main>
     </div>
   )
 }

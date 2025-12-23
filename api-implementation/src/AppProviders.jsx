@@ -10,8 +10,7 @@ export function AppProviders({children}) {
         const savedTodos = localStorage.getItem('todos');
         return savedTodos ? JSON.parse(savedTodos) : [];
     });
-    // created function for adding new todo
-    
+    // created function for adding new todo 
     const addTodo = (text) => {
         const newTodo = {
                 id: Date.now(),
@@ -51,6 +50,10 @@ export function AppProviders({children}) {
         setTodos(currentTodos => currentTodos.filter(todo => !todo.completed));
         console.log('Completed todos cleared');
     };
+
+    useEffect(() => {
+        localStorage.setItem('todos', JSON.stringify(todos));
+    }, [todos]);
     // created function that creates todo value with Dependency array
     const todoValue = useMemo(() => ({
         todos,
@@ -60,12 +63,21 @@ export function AppProviders({children}) {
         editTodo,
         clearCompleted
     }), [todos]);
+
     // theme state 
-    const [theme, setTheme] = useState('light');
+    const [theme, setTheme] = useState(() => {
+        const savedTheme = localStorage.getItem('theme');
+        return savedTheme || 'light';
+    });
+    
     // theme function logic
     const toggleTheme = () => {
         setTheme(currentTheme => (currentTheme === 'light' ? 'dark' : 'light'));
     };
+    // local storage
+    useEffect(() => {
+        localStorage.setItem('theme', theme);
+    }, [theme]);
     const themeValue = useMemo(() => ({theme, toggleTheme}), [theme]);
     //  filter state
     const [filter, setFilter] = useState('all');

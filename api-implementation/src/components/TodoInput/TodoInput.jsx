@@ -15,15 +15,16 @@ const TodoInput = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className='todo-input-section'>
       <input 
         type="text"
         value={inputText}
         onChange={(e) => setInputText(e.target.value)}
-        placeholder="What needs to be done?"
+        placeholder="Things to be done!"
+        className='todo-input'
         autoFocus
       />
-      <button type="submit">Add Todo</button>
+      <button type="submit" className='add-todo-btn'>Add Todo</button>
     </form>
   );
 };

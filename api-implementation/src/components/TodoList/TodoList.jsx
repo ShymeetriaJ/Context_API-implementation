@@ -20,11 +20,11 @@ const TodoList = () => {
   const filteredTodos = getFilteredTodos();
 
   if (filteredTodos.length === 0) {
-    return <p>No todos to display!</p>;
+    return <p className='empty-state'>No todos to display!</p>;
   }
 
   return (
-    <ul>
+    <ul className='todo-list'>
       {filteredTodos.map(todo => (
         <TodoItem key={todo.id} todo={todo} />
       ))}
